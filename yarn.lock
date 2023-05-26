@@ -1842,13 +1842,20 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
-"@react-native-firebase/app@^17.5.0":
+"@react-native-firebase/app@^17.5.0", "@react-native-firebase/app@17.5.0":
   version "17.5.0"
   resolved "https://registry.npmjs.org/@react-native-firebase/app/-/app-17.5.0.tgz"
   integrity sha512-8DWjguVmVYmuPWI7mhXlmLB6GxKnPjUjZ4Wnnyj3Wh5uqHzgUREHEA1aH92PT84LJLZL8F6dJZk+fIyo9UyXnA==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
+
+"@react-native-firebase/auth@^17.5.0":
+  version "17.5.0"
+  resolved "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-17.5.0.tgz"
+  integrity sha512-iF5Wv7dcDPmxu2om5SkPVGPELAwahAp3izFXjrv6wQAFmOTQ+2rEIDRBFMmS7EZ/qwNodvKK3vgDLEnOxDtTAQ==
+  dependencies:
+    plist "^3.0.5"
 
 "@react-native/assets@1.0.0":
   version "1.0.0"

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-native-firebase/app": "^17.5.0",
+    "@react-native-firebase/auth": "^17.5.0",
     "expo": "~48.0.15",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
