@@ -13,6 +13,7 @@
     "@react-native-firebase/auth": "^17.5.0",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@tanstack/react-query": "^4.29.11",
     "expo": "~48.0.15",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
