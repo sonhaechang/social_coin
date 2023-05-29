@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, TouchableOpacity, View } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 import styled from 'styled-components/native';
 
@@ -23,9 +25,10 @@ export const Icon = styled.Image`
     margin-bottom: 10px;
 `;
 
-const IconBaseUrl = 'https://coinicons-api.vercel.app/api/icon/';
+export const IconBaseUrl = 'https://coinicons-api.vercel.app/api/icon/';
 
-export default function Coin({ index, symbol }) {
+export default function Coin({ index, id, symbol }) {
+    const navigation = useNavigation();
     const opacity = useRef(new Animated.Value(0)).current;
     const scale = opacity.interpolate({
         inputRange: [0, 1],
@@ -41,16 +44,20 @@ export default function Coin({ index, symbol }) {
     }, []);
 
     return (
-        <Wrapper 
-            style={{ 
-                flex: 0.31, 
-                opacity ,
-                transform: [{ scale }]
-            }}>
-            <Icon 
-                source={{ uri: `${IconBaseUrl}${symbol.toLowerCase()}` }} 
-            />
-            <CoinName>{symbol}</CoinName>
-        </Wrapper>
+        <TouchableOpacity
+            style={{ flex: 0.31, }}
+            onPress={() => navigation.navigate('Detail', { symbol, id })}
+        >
+            <Wrapper 
+                style={{ 
+                    opacity ,
+                    transform: [{ scale }]
+                }}>
+                <Icon 
+                    source={{ uri: `${IconBaseUrl}${symbol.toLowerCase()}` }} 
+                />
+                <CoinName>{symbol}</CoinName>
+            </Wrapper>
+        </TouchableOpacity>
     )
 };

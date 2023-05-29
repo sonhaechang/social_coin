@@ -60,6 +60,7 @@ export default function Home() {
                 renderItem={({ item, index }) => (
                     <Coin 
                         index={index}
+                        id={item.id}
                         symbol={item.symbol} 
                     />
                 )}
