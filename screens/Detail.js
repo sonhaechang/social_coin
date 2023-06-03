@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components/native';
 
 import { useQuery } from '@tanstack/react-query';
 
+import { VictoryChart, VictoryLine, VictoryScatter } from 'victory-native';
+
 import { Icon, IconBaseUrl } from "../components/Coin";
 import { info, history } from '../api';
+import { BLACK_COLOR } from '../colors';
 
 
-const Container = styled.View``;
+const Container = styled.ScrollView`
+    background-color: ${BLACK_COLOR};
+`;
 
 export default function Detail({
     navigation,
     route: { params: { symbol, id }, },
 }) {
+    const [victoryData, setVictoryData] = useState(null);
+
     const {
         isInitialLoading: infoLoading,
         data: infoData
@@ -40,7 +47,36 @@ export default function Detail({
         });
     }, []);
 
+    useEffect(() => {
+        if (historyData) {
+            setVictoryData(
+                historyData.map((price) => ({
+                    x: new Date(price.timestamp).getTime(),
+                    y: price.price,
+                }))
+            );
+        }
+    }, [historyData]);
+
     return (
-        <Container></Container>
+        <Container>
+            {
+                victoryData ? (
+                    <VictoryChart height={360}>
+                        <VictoryLine 
+                            animate
+                            data={victoryData} 
+                            style={{ data: {stroke: '#1abc9c'} }}
+                            interpolation='monotoneX'
+                        />
+
+                        <VictoryScatter 
+                            data={victoryData}
+                            style={{ data: {fill: '#1abc9c'} }}
+                        />
+                    </VictoryChart>
+                ) : null
+            }
+        </Container>
     );
 }
